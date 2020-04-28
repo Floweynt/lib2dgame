@@ -29,5 +29,5 @@ int main()
 	sf::RenderWindow idk(sf::VideoMode(352, 320), "asdf");
 
 	tmap.render();
-	while(true){idk.clear();tmap.draw(&idk);idk.display();}
+	while(true){idk.clear();tmap.draw(&idk,{0,0});idk.display();}
 }

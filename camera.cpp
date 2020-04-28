@@ -47,13 +47,16 @@ namespace world
         }
 
         texture = texturemapwin.getTexture();   // put texture into internal texture
-        return -1;
+        is_valid = true;
+        return 0;
     }
     
-    int tilemap::draw(sf::RenderWindow* blurryvision)  // draw with pointer to RenderWindow
+    int tilemap::draw(sf::RenderWindow* blurryvision, types::epos pos)  // draw with pointer to RenderWindow
     {
         if(!is_valid || !is_init)
             return -1;
+
+        pos = pos * tilesize;
         sf::Sprite s;
         s.setTexture(texture);
         blurryvision->draw(s);

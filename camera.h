@@ -15,7 +15,7 @@ public:
         inline tilemap() { is_valid = false; is_init = false; }
         inline tilemap(types::tileset_t _tileset, types::level_t _levels, size_t _tilesize) { this->init(_tileset, _levels, _tilesize); }
         void init(types::tileset_t _tileset, types::level_t _levels, size_t _tilesize);
-        void render(); // very memory and time heavy, use only once to load
-        void draw(sf::RenderWindow* blurryvision);
+        int render(); // very memory and time heavy, use only once to load
+        int draw(sf::RenderWindow* blurryvision, types::epos pos);
     };
 }
