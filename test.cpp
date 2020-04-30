@@ -39,7 +39,7 @@ int main()
         	        	window.close();
         	}
 		window.clear();			// clear screen
-		tmap.draw(&window, {0,0});		// redraw the tilemap (very fast)
+		tmap.draw(&window, {0,0});	// redraw the tilemap (very fast)
 		window.display();		// update screen
     	}  
 }
