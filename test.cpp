@@ -5,6 +5,9 @@ using namespace types;
 
 int main()
 {
+	double x = 0; 
+	double y = 0;
+
 	sf::Image green;			// example tile image
 	sf::Image cyan;				// another tile for testing
 	
@@ -13,7 +16,7 @@ int main()
 	
 	tileset_t t{green, cyan};		// create tileset
 	level_t l{				// create levels, which tells tilemap which tile to use
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
 		{0, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0}, 
 		{0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0}, 
 		{0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0}, 
@@ -34,12 +37,24 @@ int main()
         	sf::Event event;
         	while (window.pollEvent(event))
         	{
-        	   	 // "close requested" event: we close the window
-        	    	if (event.type == sf::Event::Closed)
-        	        	window.close();
+        	   	// "close requested" event: we close the window
+        	    if (event.type == sf::Event::Closed)
+        	        window.close();while (window.pollEvent(event))
+
+            	if (event.type == sf::Event::KeyPressed)
+            	{
+                	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+                    	y-=1;
+                	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+                    	x-=1;
+                	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+                    	y+=1;
+                	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+                    	x+=1;
+                }
         	}
 		window.clear();			// clear screen
-		tmap.draw(&window, {0,0});	// redraw the tilemap (very fast)
+		tmap.draw(&window, {x,y});	// redraw the tilemap (very fast)
 		window.display();		// update screen
     	}  
 }
