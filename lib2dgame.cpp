@@ -26,10 +26,10 @@ namespace world
         this->stileset = _stileset;
         this->sprites = _sprites;
     }
-    void room::render()
+    int room::render()
     {
         if(tilemap::render() != 0)
             return -1;
-        
+        return 0;
     }
 }

@@ -1,6 +1,7 @@
+#ifndef __LIB2DGAME_TYPES_H__
+#define __LIB2DGAME_TYPES_H__
 #include <vector>
 #include <SFML/Graphics.hpp>
-
 namespace world
 {
     namespace types
@@ -25,3 +26,4 @@ namespace world
 		typedef pos<double> epos;
     }
 }
+#endif

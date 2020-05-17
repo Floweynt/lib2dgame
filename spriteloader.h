@@ -1,4 +1,7 @@
+#ifndef __LIB2DGAME_SPRITELOADER_H__
+#define __LIB2DGAME_SPRITELOADER_H__
 #include <SFML/Graphics.hpp>
+#include <vector>
 #include "json/json/json.h"
 #include "types.h"
 
@@ -19,8 +22,16 @@ namespace world
         bool hasinteractbox;
         types::epos ib1;
         types::epos ib2;
-
-        types::tpos size;
         types::epos pos;
-    }
+    };
+
+    struct stile
+    {
+        types::tpos size;
+        sf::Image texture;
+    };
+
+    typedef std::vector<stile> stileset_t;
+    typedef std::vector<sprite> spritelist;
 }
+#endif

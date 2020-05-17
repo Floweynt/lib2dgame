@@ -9,12 +9,14 @@ lib : objects/lib2dgame.a
 test : lib objects/test.o
 	$(CC) objects/test.o objects/lib2dgame.a -o test $(LIBSFML) 
 
-objects/lib2dgame.a : objects/camera.o | objects 
+objects/lib2dgame.a : objects/camera.o objects/lib2dgame.o | objects 
 	$(AR) rvs $@ $^
 
 objects/camera.o : camera.cpp | objects types.h camera.h
 	$(CC) $^ -c -o $@ $(CCFLAGS)
 objects/test.o : test.cpp | objects camera.h types.h
+	$(CC) $^ -c -o $@ $(CCFLAGS)
+objects/lib2dgame.o : lib2dgame.cpp | camera.h spriteloader.h
 	$(CC) $^ -c -o $@ $(CCFLAGS)
 objects:
 	mkdir $@

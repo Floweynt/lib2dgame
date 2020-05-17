@@ -1,3 +1,6 @@
+#ifndef __LIB2DGAME_H__
+#define __LIB2DGAME_H__
+
 #include "camera.h"
 #include "spriteloader.h"
 #include <thread>
@@ -28,11 +31,14 @@ namespace world
         std::thread event_thread;
         std::atomic_bool stop_thread;
         std::queue<builtin_event> events;
-        
+
+        void poll_events();
+    public:
         inline room() : tilemap::tilemap() {};
         inline room(types::tileset_t _tileset, types::level_t _levels, size_t _tilesize, stileset_t _stileset, spritelist _sprites)
-            : tilemap::tilemap() { this->init(_tileset, _levels, _tilesize, _stileset, _sprites) };
+            : tilemap::tilemap() { this->init(_tileset, _levels, _tilesize, _stileset, _sprites); }
         void init(types::tileset_t _tileset, types::level_t _levels, size_t _tilesize, stileset_t _stileset, spritelist _sprites);
-        void render();
-    }
+        int render();
+    };
 }
+#endif
