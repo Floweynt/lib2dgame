@@ -33,30 +33,27 @@ int main()
 
 	tmap.render(); 				// render tilemap and store to internal buffer
 	while (window.isOpen())
-    	{
-        	// check all the window's events that were triggered since the last iteration of the loop
-        	sf::Event event;
-        	while (window.pollEvent(event))
-        	{
-        		// "close requested" event: we close the window
-        		if (event.type == sf::Event::Closed)
-        	       		window.close();
-            		if (event.type == sf::Event::KeyPressed)
-            		{
-				const sf::Keyboard::Key keycode = event.key.code;
-                		if (keycode == sf::Keyboard::W)
-                		    	y -= 1;
-                		else if (keycode == sf::Keyboard::A)
-                    			x -= 1;
-                		else if (keycode == sf::Keyboard::S)
-                    			y+= 1;
-                		else if (keycode == sf::Keyboard::D)
-                    			x += 1;
-                	}
-		}
+    {
+    	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+                    y-=0.002;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+                    x-=0.002;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+                    y+=0.002;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+                    x+=0.002;
+    
+        // check all the window's events that were triggered since the last iteration of the loop
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+        	// "close requested" event: we close the window
+        	if (event.type == sf::Event::Closed)
+        	    window.close();
+        }
 		window.clear();			// clear screen
-		std::cout << "\r" << x << ", " << y << "           ";
-		tmap.draw(&window, {x,y});	// redraw the tilemap (very fast)
+		std::cout << "\r" << x << ", " << y << "           "; // update pos
+		tmap.draw(&window, {x, y});	// redraw the tilemap (very fast)
 		window.display();		// update screen
-    	}  
+    }  
 }
