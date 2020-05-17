@@ -59,7 +59,7 @@ namespace world
         pos = pos * tilesize;
         sf::Sprite s;
         s.setTexture(texture);
-        s.setPosition(pos.x, pos.y);
+        s.setTextureRect({(int)pos.x, (int)pos.y, (int)blurryvision->getSize().x, (int)blurryvision->getSize().y});
         blurryvision->draw(s);
         return 0;
     }

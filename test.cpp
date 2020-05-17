@@ -1,4 +1,5 @@
 #include "camera.h"
+#include <iostream>
 
 using namespace world; 				// using namespaces for convenience
 using namespace types;
@@ -16,7 +17,7 @@ int main()
 	
 	tileset_t t{green, cyan};		// create tileset
 	level_t l{				// create levels, which tells tilemap which tile to use
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
 		{0, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0}, 
 		{0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0}, 
 		{0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0}, 
@@ -28,7 +29,7 @@ int main()
 		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
 		};
 	world::tilemap tmap (t, l, 32);		// create tilemap; 32 is the size of the tiles
-	sf::RenderWindow window(sf::VideoMode(352, 320), "tilemap example");
+	sf::RenderWindow window(sf::VideoMode(200, 200), "tilemap example");
 
 	tmap.render(); 				// render tilemap and store to internal buffer
 	while (window.isOpen())
@@ -54,6 +55,7 @@ int main()
                 	}
 		}
 		window.clear();			// clear screen
+		std::cout << "\r" << x << ", " << y << "           ";
 		tmap.draw(&window, {x,y});	// redraw the tilemap (very fast)
 		window.display();		// update screen
     	}  
