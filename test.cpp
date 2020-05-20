@@ -29,7 +29,7 @@ int main()
 		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
 		};
 	world::tilemap tmap (t, l, 32);		// create tilemap; 32 is the size of the tiles
-	sf::RenderWindow window(sf::VideoMode(200, 200), "tilemap example");
+	sf::RenderWindow window(sf::VideoMode(1024, 1024), "tilemap example");
 
 	tmap.render(); 				// render tilemap and store to internal buffer
 	while (window.isOpen())
