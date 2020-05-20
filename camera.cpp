@@ -1,4 +1,5 @@
 #include "camera.h"
+#include <algorithm>
 
 namespace world
 {
@@ -57,9 +58,14 @@ namespace world
             return -1;
 
         pos = pos * tilesize;
+        int x1 = pos.x;
+        int y1 = pos.y;
+        int x2 = std::min((int)blurryvision->getSize().x, (int)texture.getSize().x);
+        int y2 = std::min((int)blurryvision->getSize().y, (int)texture.getSize().y);
         sf::Sprite s;
         s.setTexture(texture);
-        s.setTextureRect({(int)pos.x, (int)pos.y, (int)blurryvision->getSize().x, (int)blurryvision->getSize().y});
+        s.setTextureRect({0, 0, x2, y2});
+        s.setPosition(x1, y1);
         blurryvision->draw(s);
         return 0;
     }
