@@ -14,7 +14,7 @@ namespace world
 		{
 			T x;
 			T y;
-			pos& operator*(int rhs)
+			pos& operator*(T rhs)
 			{
 				x *= rhs;
 				y *= rhs;

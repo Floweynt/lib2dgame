@@ -12,6 +12,7 @@ namespace world
         types::tileset_t tileset;   // tileset (set of tiles)
         types::level_t levels;      // 2d array of tiles to use (change to array not vector?)
         size_t tilesize;            // size of each tile
+        float factor;               // wanted size / tilesize
         sf::Texture texture;        // internal texture buffer
         bool is_valid;              // is it valid?
         bool is_init;               // is it initalized?
