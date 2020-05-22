@@ -18,8 +18,8 @@ namespace world
         bool is_init;               // is it initalized?
     public:
         inline tilemap() { is_valid = false; is_init = false; }
-        inline tilemap(types::tileset_t _tileset, types::level_t _levels, size_t _tilesize) { this->init(_tileset, _levels, _tilesize); }
-        virtual void init(types::tileset_t _tileset, types::level_t _levels, size_t _tilesize);
+        inline tilemap(types::tileset_t _tileset, types::level_t _levels) { this->init(_tileset, _levels); }
+        virtual void init(types::tileset_t _tileset, types::level_t _levels);
         virtual int render(); // very memory and time heavy, use only once to load
         virtual int draw(sf::RenderWindow* blurryvision, types::epos pos);
     };

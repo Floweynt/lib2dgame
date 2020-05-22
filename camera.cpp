@@ -9,14 +9,16 @@ namespace world
 	is_valid = false;
 	is_init = false;
 
-	if(tilesize_t.size() == 0)
+	if(_levels.size() == 0)
 		return;
-	else if(tilesize_t[0].size() == 0)
+	else if(_levels[0].size() == 0)
 		return;
+	if(_tileset.size() == 0)
+                return;
 
         tileset = _tileset;     		// set of all tiles to use
         levels = _levels;       		// which tiles to use
-        tilesize = tileset[0].getSize().x;   	// set size of tiles (support for non-square tiles coming soon!)
+        tilesize = _tileset[0].getSize().x;   	// set size of tiles (support for non-square tiles coming soon!)
         is_valid = false;       		// you can't safely draw
         is_init = true;
     }
