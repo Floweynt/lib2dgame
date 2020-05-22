@@ -42,7 +42,7 @@ namespace world
                 sf::Sprite s;                           // define the sprite
                 t.loadFromImage(tileset[levels[j][i]]); // load correct image
                 s.setTexture(t);                        // set sprite texture
-                s.setPosition(i * tilesize, (ysize - j - 1) * tilesize);  // set pos for RenderTexture, y starts at bottom not top
+                s.setPosition(i * tilesize, j * tilesize);  // set pos for RenderTexture, y starts at bottom not top
                 texturemapwin.draw(s);                                      
             }
         }
