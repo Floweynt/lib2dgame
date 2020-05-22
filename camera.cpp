@@ -4,15 +4,21 @@
 
 namespace world
 {
-    void tilemap::init(types::tileset_t _tileset, types::level_t _levels, size_t _size)
+    void tilemap::init(types::tileset_t _tileset, types::level_t _levels)
     {
-        tileset = _tileset;     // set of all tiles to use
-        levels = _levels;       // which tiles to use 
-        tilesize = tileset[0].getSize().x;   // set size of tiles (support for non-square tiles coming soon!)
-        factor = _size/(float) tilesize;
-        is_valid = false;       // you can't safely draw
+	is_valid = false;
+	is_init = false;
+
+	if(tilesize_t.size() == 0)
+		return;
+	else if(tilesize_t[0].size() == 0)
+		return;
+
+        tileset = _tileset;     		// set of all tiles to use
+        levels = _levels;       		// which tiles to use
+        tilesize = tileset[0].getSize().x;   	// set size of tiles (support for non-square tiles coming soon!)
+        is_valid = false;       		// you can't safely draw
         is_init = true;
-        std::cout<<factor<<std::endl;
     }
 
     int tilemap::render() // very memory and time heavy, use only once to load
@@ -41,11 +47,11 @@ namespace world
         {
             for(int j = 0; j < ysize; j++)
             {
-                sf::Texture t;                          // define the texture
-                sf::Sprite s;                           // define the sprite
-                t.loadFromImage(tileset[levels[j][i]]); // load correct image
-                s.setTexture(t);                        // set sprite texture
-                s.setPosition(i * tilesize, (ysize - j - 1) * tilesize);  // set pos for RenderTexture, y starts at bottom not top
+                sf::Texture t;                          	// define the texture
+                sf::Sprite s;                           	// define the sprite
+                t.loadFromImage(tileset[levels[j][i]]); 	// load correct image
+                s.setTexture(t);                        	// set sprite texture
+                s.setPosition(i * tilesize, j * tilesize);  	// set pos for RenderTexture, y starts at bottom not top
                 texturemapwin.draw(s);                                      
             }
         }
