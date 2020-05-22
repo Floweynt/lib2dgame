@@ -74,14 +74,15 @@ namespace world
         s.setTexture(texture);
         //s.setScale(factor, factor);
 
-        int x1 = std::max((int)-pos.x, 0);
-        int y1 = std::max((int)-pos.y, 0);
-        int x2 = std::min((int)(blurryvision->getSize().x - pos.x), (int)(texture.getSize().x - x1));
-        int y2 = std::min((int)(blurryvision->getSize().y - pos.y), (int)(texture.getSize().y - y1));
+        int x1 = std::min(std::max((int)-pos.x, 0), (int)texture.getSize().x);
+        int y1 = std::min(std::max((int)-pos.y, 0), (int)texture.getSize().y);
+        int x2 = std::max(std::min((int)(blurryvision->getSize().x - pos.x), (int)(texture.getSize().x - x1)), 0);
+        int y2 = std::max(std::min((int)(blurryvision->getSize().y - pos.y), (int)(texture.getSize().y - y1)), 0);
         int x3 = std::max((int)pos.x, 0);
         int y3 = std::max((int)pos.y, 0);
+        std::cout<< y1 << " " << y2 << " " << y3 << "\n";
 
-        s.setTextureRect({x1, 0, x2, y2});
+        s.setTextureRect({x1, y1, x2, y2});
         s.setPosition(x3, y3);
         blurryvision->draw(s);
         return 0;
