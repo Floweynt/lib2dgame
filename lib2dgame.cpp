@@ -22,7 +22,7 @@ namespace world
     }
     void room::init(types::tileset_t _tileset, types::level_t _levels, size_t _tilesize, stileset_t _stileset, spritelist _sprites)
     {
-        tilemap::init(_tileset, _levels, _tilesize);
+        tilemap::init(_tileset, _levels);
         this->stileset = _stileset;
         this->sprites = _sprites;
     }
