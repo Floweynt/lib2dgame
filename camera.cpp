@@ -68,17 +68,21 @@ namespace world
         if(!is_valid || !is_init)
             return -1;
         pos = pos * tilesize;
+        pos.y = blurryvision->getSize().y - pos.y - texture.getSize().y;
 
         sf::Sprite s;
         s.setTexture(texture);
         //s.setScale(factor, factor);
 
-        int x1 = pos.x;
-        int y1 = pos.y;
-        int x2 = std::min((int)blurryvision->getSize().x, (int)texture.getSize().x);
-        int y2 = std::min((int)blurryvision->getSize().y, (int)texture.getSize().y);
-        s.setTextureRect({0, 0, x2, y2});
-        s.setPosition(x1, y1);
+        int x1 = std::max((int)-pos.x, 0);
+        int y1 = std::max((int)-pos.y, 0);
+        int x2 = std::min((int)(blurryvision->getSize().x - pos.x), (int)(texture.getSize().x - x1));
+        int y2 = std::min((int)(blurryvision->getSize().y - pos.y), (int)(texture.getSize().y - y1));
+        int x3 = std::max((int)pos.x, 0);
+        int y3 = std::max((int)pos.y, 0);
+
+        s.setTextureRect({x1, 0, x2, y2});
+        s.setPosition(x3, y3);
         blurryvision->draw(s);
         return 0;
     }
