@@ -71,7 +71,7 @@ namespace world
 
         sf::Sprite s;
         s.setTexture(texture);
-        s.setScale(factor, factor);
+        //s.setScale(factor, factor);
 
         int x1 = pos.x;
         int y1 = pos.y;
