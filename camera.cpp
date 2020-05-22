@@ -80,7 +80,6 @@ namespace world
         int y2 = std::max(std::min((int)(blurryvision->getSize().y - pos.y), (int)(texture.getSize().y - y1)), 0);
         int x3 = std::max((int)pos.x, 0);
         int y3 = std::max((int)pos.y, 0);
-        std::cout<< y1 << " " << y2 << " " << y3 << "\n";
 
         s.setTextureRect({x1, y1, x2, y2});
         s.setPosition(x3, y3);
