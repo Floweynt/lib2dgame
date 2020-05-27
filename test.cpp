@@ -36,7 +36,7 @@ int main()
 	test.loadFromFile("assets/sprites/slime_lightLeft_idle.png");
 
 	world::room tmap (t, l, {test}, {s});		// create tilemap; 32 is the size of the tiles
-	sf::RenderWindow window(sf::VideoMode(1024, 1024), "tilemap example");
+	sf::RenderWindow window(sf::VideoMode(1024, 1024), "tilemap example", sf::Style::Titlebar | sf::Style::Close);
 
 	tmap.render(); 				// render tilemap and store to internal buffer
 	while (window.isOpen())
