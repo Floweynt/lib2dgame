@@ -33,7 +33,7 @@ int main()
 	s.stile_number = 0;
 
 	sf::Image test;
-	test.loadFromFile("../assets/sprites/slime_lightLeft_idle.png");
+	test.loadFromFile("assets/sprites/slime_lightLeft_idle.png");
 
 	world::room tmap (t, l, {test}, {s});		// create tilemap; 32 is the size of the tiles
 	sf::RenderWindow window(sf::VideoMode(1024, 1024), "tilemap example");

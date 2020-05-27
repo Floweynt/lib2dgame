@@ -2,7 +2,6 @@
 #define __LIB2DGAME_SPRITELOADER_H__
 #include <SFML/Graphics.hpp>
 #include <vector>
-#include "json/json/json.h"
 #include "types.h"
 
 namespace world
