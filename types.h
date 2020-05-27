@@ -14,11 +14,19 @@ namespace world
 		{
 			T x;
 			T y;
-			pos& operator*(T rhs)
+			pos operator*(T rhs)
 			{
-				x *= rhs;
-				y *= rhs;
-				return *this;
+				pos<T> newpos;
+				newpos.x = x * rhs;
+				newpos.y = y * rhs;
+				return newpos;
+			}
+			pos operator+(pos<T> second) 
+			{
+				pos<T> newpos;
+				newpos.x = x + second.x;
+				newpos.y = y + second.y;
+				return newpos;
 			}
 		};
 

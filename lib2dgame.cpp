@@ -38,10 +38,9 @@ namespace world
             return -1;
         for (int i = 0; i < sprites.size(); i++) 
         {
-            std::cout << "this worked";
             sf::Texture t;
             t.loadFromImage(stileset[sprites[i].stile_number]);
-            tilemap::draw(t, blurryvision, sprites[i].pos, factor);
+            tilemap::draw(t, blurryvision, sprites[i].pos+pos, factor);
         }
         return 0;
     }
