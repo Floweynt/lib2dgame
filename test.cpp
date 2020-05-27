@@ -12,8 +12,8 @@ int main()
 	sf::Image grass1;			// example tile image
 	sf::Image grass2;				// another tile for testing
 	
-	grass1.loadFromFile("../assets/tiles/grass_var1.png");	// load from file
-	grass2.loadFromFile("../assets/tiles/path_var2.png");
+	grass1.loadFromFile("assets/tiles/grass_var1.png");	// load from file
+	grass2.loadFromFile("assets/tiles/path_var2.png");
 
 	
 	tileset_t t{grass1, grass2};		// create tileset
