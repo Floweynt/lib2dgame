@@ -16,6 +16,7 @@ namespace world
         sf::Texture texture;        // internal texture buffer
         bool is_valid;              // is it valid?
         bool is_init;               // is it initalized?
+        virtual int draw(sf::Texture, sf::RenderWindow* blurryvision, types::epos pos);
     public:
         inline tilemap() { is_valid = false; is_init = false; }
         inline tilemap(types::tileset_t _tileset, types::level_t _levels) { this->init(_tileset, _levels); }

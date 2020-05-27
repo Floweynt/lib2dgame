@@ -35,10 +35,11 @@ namespace world
         void poll_events();
     public:
         inline room() : tilemap::tilemap() {};
-        inline room(types::tileset_t _tileset, types::level_t _levels, size_t _tilesize, stileset_t _stileset, spritelist _sprites)
-            : tilemap::tilemap() { this->init(_tileset, _levels, _tilesize, _stileset, _sprites); }
-        void init(types::tileset_t _tileset, types::level_t _levels, size_t _tilesize, stileset_t _stileset, spritelist _sprites);
+        inline room(types::tileset_t _tileset, types::level_t _levels, stileset_t _stileset, spritelist _sprites)
+            : tilemap::tilemap() { this->init(_tileset, _levels, _stileset, _sprites); }
+        void init(types::tileset_t _tileset, types::level_t _levels, stileset_t _stileset, spritelist _sprites);
         int render();
+        int draw(sf::RenderWindow* blurryvision, types::epos pos);
     };
 }
 #endif

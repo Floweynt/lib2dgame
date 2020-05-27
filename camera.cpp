@@ -6,15 +6,15 @@ namespace world
 {
     void tilemap::init(types::tileset_t _tileset, types::level_t _levels)
     {
-	is_valid = false;
-	is_init = false;
-
-	if(_levels.size() == 0)
-		return;
-	else if(_levels[0].size() == 0)
-		return;
-	if(_tileset.size() == 0)
-                return;
+        is_valid = false;
+        is_init = false;
+        
+        if(_levels.size() == 0)
+            return;
+        else if(_levels[0].size() == 0)
+            return;
+        if(_tileset.size() == 0)
+            return;
 
         tileset = _tileset;     		// set of all tiles to use
         levels = _levels;       		// which tiles to use
@@ -62,28 +62,36 @@ namespace world
         is_valid = true;
         return 0;
     }
-    
-    int tilemap::draw(sf::RenderWindow* blurryvision, types::epos pos)  // draw with pointer to RenderWindow
+
+    int tilemap::draw(sf::Texture texture, sf::RenderWindow* blurryvision, types::epos pos) //draw w/ pointer to RenderWindow
     {
-        if(!is_valid || !is_init)
-            return -1;
         pos = pos * tilesize;
+        //types::epos pos2 = pos*(1/(double)10);
         pos.y = blurryvision->getSize().y - pos.y - texture.getSize().y;
 
         sf::Sprite s;
         s.setTexture(texture);
-        //s.setScale(factor, factor);
+        s.setScale(10,10);
 
-        int x1 = std::min(std::max((int)-pos.x, 0), (int)texture.getSize().x);
-        int y1 = std::min(std::max((int)-pos.y, 0), (int)texture.getSize().y);
+        int x1 = std::min(std::max((int)-pos.x, 0), (int)texture.getSize().x*10)/10;
+        //std::cout<< pos2.x << std::endl;
+        int y1 = std::min(std::max((int)-pos.y, 0), (int)texture.getSize().y*10)/10;
         int x2 = std::max(std::min((int)(blurryvision->getSize().x - pos.x), (int)(texture.getSize().x - x1)), 0);
         int y2 = std::max(std::min((int)(blurryvision->getSize().y - pos.y), (int)(texture.getSize().y - y1)), 0);
         int x3 = std::max((int)pos.x, 0);
         int y3 = std::max((int)pos.y, 0);
 
         s.setTextureRect({x1, y1, x2, y2});
-        s.setPosition(x3, y3);
+        s.setPosition(x3+20, y3+20);
         blurryvision->draw(s);
+        return 0;
+    }
+    
+    int tilemap::draw(sf::RenderWindow* blurryvision, types::epos pos)  // draw with pointer to RenderWindow
+    {
+        if(!is_valid || !is_init)
+            return -1;
+        draw(texture, blurryvision, pos);
         return 0;
     }
 }

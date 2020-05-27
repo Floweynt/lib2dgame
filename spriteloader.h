@@ -9,7 +9,8 @@ namespace world
 {
     struct sprite
     {
-        size_t level;
+        types::epos pos;
+        size_t stile_number;
 
         bool hashitbox;
         types::epos hb1;
@@ -22,16 +23,15 @@ namespace world
         bool hasinteractbox;
         types::epos ib1;
         types::epos ib2;
-        types::epos pos;
     };
 
-    struct stile
+    /*struct stile
     {
         types::tpos size;
         sf::Image texture;
-    };
+    };*/
 
-    typedef std::vector<stile> stileset_t;
+    typedef std::vector<sf::Image> stileset_t;
     typedef std::vector<sprite> spritelist;
 }
 #endif

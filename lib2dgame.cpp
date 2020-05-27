@@ -20,7 +20,7 @@ namespace world
             {}
         }
     }
-    void room::init(types::tileset_t _tileset, types::level_t _levels, size_t _tilesize, stileset_t _stileset, spritelist _sprites)
+    void room::init(types::tileset_t _tileset, types::level_t _levels, stileset_t _stileset, spritelist _sprites)
     {
         tilemap::init(_tileset, _levels);
         this->stileset = _stileset;
@@ -30,6 +30,18 @@ namespace world
     {
         if(tilemap::render() != 0)
             return -1;
+        return 0;
+    }
+    int room::draw(sf::RenderWindow* blurryvision, types::epos pos)
+    {
+        if(tilemap::draw(blurryvision, pos) != 0) 
+            return -1;
+        for (int i = 0; i < sprites.size(); i++) 
+        {
+            sf::Texture t;
+            t.loadFromImage(stileset[sprites[i].stile_number]);
+            tilemap::draw(t, blurryvision, sprites[i].pos);
+        }
         return 0;
     }
 }

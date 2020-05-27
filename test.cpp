@@ -1,4 +1,4 @@
-#include "camera.h"
+#include "lib2dgame.h"
 #include <iostream>
 
 using namespace world; 				// using namespaces for convenience
@@ -9,14 +9,14 @@ int main()
 	double x = 0; 
 	double y = 0;
 
-	sf::Image green;			// example tile image
-	sf::Image cyan;				// another tile for testing
+	sf::Image grass1;			// example tile image
+	sf::Image grass2;				// another tile for testing
 	
-	green.loadFromFile("green.png");	// load from file
-	cyan.loadFromFile("cyan.png");
+	grass1.loadFromFile("../assets/tiles/grass_var1.png");	// load from file
+	grass2.loadFromFile("../assets/tiles/grass_var2.png");
 
 	
-	tileset_t t{green, cyan};		// create tileset
+	tileset_t t{grass1, grass2};		// create tileset
 	level_t l{				// create levels, which tells tilemap which tile to use
 		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
 		{0, 1, 1, 1, 0, 1, 0, 0, 1, 0}, 
@@ -29,7 +29,8 @@ int main()
 		{0, 1, 0, 0, 0, 0, 1, 1, 0, 0}, 
 		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
 		};
-	world::tilemap tmap (t, l);		// create tilemap; 32 is the size of the tiles
+
+	world::room tmap (t, l, {}, {});		// create tilemap; 32 is the size of the tiles
 	sf::RenderWindow window(sf::VideoMode(1024, 1024), "tilemap example");
 
 	tmap.render(); 				// render tilemap and store to internal buffer
