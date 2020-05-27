@@ -16,13 +16,14 @@ namespace world
         sf::Texture texture;        // internal texture buffer
         bool is_valid;              // is it valid?
         bool is_init;               // is it initalized?
-        virtual int draw(sf::Texture, sf::RenderWindow* blurryvision, types::epos pos);
+        virtual int draw(sf::Texture, sf::RenderWindow* blurryvision, types::epos pos, float factor);
     public:
         inline tilemap() { is_valid = false; is_init = false; }
-        inline tilemap(types::tileset_t _tileset, types::level_t _levels) { this->init(_tileset, _levels); }
-        virtual void init(types::tileset_t _tileset, types::level_t _levels);
+        inline tilemap(types::tileset_t _tileset, types::level_t _levels, float _factor) { this->init(_tileset, _levels, _factor); }
+        virtual void init(types::tileset_t _tileset, types::level_t _levels, float _factor);
         virtual int render(); // very memory and time heavy, use only once to load
         virtual int draw(sf::RenderWindow* blurryvision, types::epos pos);
+        //virtual int draw(sf::RenderWindow* blurryvision, types::epos pos, float factor);
     };
 }
 #endif

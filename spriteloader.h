@@ -12,17 +12,11 @@ namespace world
         types::epos pos;
         size_t stile_number;
 
-        bool hashitbox;
+        bool hasHitBox;
+        bool hasCollisionBox;
+        bool hasInteractBox;
         types::epos hb1;
         types::epos hb2;
-
-        bool hascollisionbox;
-        types::epos cb1;
-        types::epos cb2;
-
-        bool hasinteractbox;
-        types::epos ib1;
-        types::epos ib2;
     };
 
     /*struct stile

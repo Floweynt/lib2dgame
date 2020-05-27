@@ -30,20 +30,27 @@ int main()
 		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
 		};
 
-	world::room tmap (t, l, {}, {});		// create tilemap; 32 is the size of the tiles
+	world::sprite s;
+	s.pos = {1,1};
+	s.stile_number = 0;
+
+	sf::Image test;
+	test.loadFromFile("../assets/sprites/slime_lightLeft_idle.png");
+
+	world::room tmap (t, l, {test}, {s});		// create tilemap; 32 is the size of the tiles
 	sf::RenderWindow window(sf::VideoMode(1024, 1024), "tilemap example");
 
 	tmap.render(); 				// render tilemap and store to internal buffer
 	while (window.isOpen())
     {
     	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-            y+=0.01;
+            y+=0.002;
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-            x-=0.01;
+            x-=0.002;
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-            y-=0.01;
+            y-=0.002;
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-            x+=0.01;
+            x+=0.002;
     
         // check all the window's events that were triggered since the last iteration of the loop
         sf::Event event;

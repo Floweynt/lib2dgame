@@ -22,7 +22,7 @@ namespace world
     }
     void room::init(types::tileset_t _tileset, types::level_t _levels, stileset_t _stileset, spritelist _sprites)
     {
-        tilemap::init(_tileset, _levels);
+        tilemap::init(_tileset, _levels, 10);
         this->stileset = _stileset;
         this->sprites = _sprites;
     }
@@ -38,9 +38,10 @@ namespace world
             return -1;
         for (int i = 0; i < sprites.size(); i++) 
         {
+            std::cout << "this worked";
             sf::Texture t;
             t.loadFromImage(stileset[sprites[i].stile_number]);
-            tilemap::draw(t, blurryvision, sprites[i].pos);
+            tilemap::draw(t, blurryvision, sprites[i].pos, factor);
         }
         return 0;
     }
