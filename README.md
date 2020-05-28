@@ -1,5 +1,5 @@
 # lib2dgame
-![C/C++ CI](https://github.com/FloweyTheFlower420/File-parsers/workflows/C/C++%20CI/badge.svg)  
+![C/C++ CI](https://github.com/FloweyTheFlower420/lib2dgame/workflows/C/C++%20CI/badge.svg)
 A simple libary for 2d games based around sfml
 ## Compiling
 First clone or download the zip for this repo;
