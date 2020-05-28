@@ -6,6 +6,7 @@ using namespace types;
 
 int main()
 {
+	//loldumb
 	double x = 0; 
 	double y = 0;
 
@@ -29,26 +30,33 @@ int main()
 		};
 
 	world::sprite s;
-	s.pos = {1,1};
+	s.pos = {3.5, 3.5};
 	s.stile_number = 0;
+
+	world::sprite s2;
+	s2.pos = {3.5, 3.5};
+	s2.stile_number = 1; 
 
 	sf::Image test;
 	test.loadFromFile("assets/sprites/slime_lightLeft_idle.png");
 
-	world::room tmap (t, l, {test}, {s});		// create tilemap; 32 is the size of the tiles
+	sf::Image test2;
+	test2.loadFromFile("assets/sprites/falling.png");
+
+	world::room tmap (t, l, {test, test2}, {s, s2});		// create tilemap; 32 is the size of the tiles
 	sf::RenderWindow window(sf::VideoMode(1024, 1024), "tilemap example", sf::Style::Titlebar | sf::Style::Close);
 
 	tmap.render(); 				// render tilemap and store to internal buffer
 	while (window.isOpen())
 	{
     		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-        		y -= 0.002;
-        	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-			x += 0.002;
-        	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         		y += 0.002;
+        	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+				x -= 0.002;
+        	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+        		y -= 0.002;
         	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-            		x -= 0.002;
+            	x += 0.002;
     
         	// check all the window's events that were triggered since the last iteration of the loop
         	sf::Event event;
@@ -60,7 +68,9 @@ int main()
         	}
 	
 		window.clear();			// clear screen
-		tmap.draw(&window, {x, y});	// redraw the tilemap (very fast)
+		tmap.sprites[1].pos = {x+3, y+3};
+		tmap.draw(&window, {-x, -y});	// redraw the tilemap (very fast)
+		std::cout << "\r" << x << " " << y << "          ";
 		window.display();		// update screen
     }		  	
 }

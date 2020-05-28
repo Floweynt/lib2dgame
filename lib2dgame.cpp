@@ -36,6 +36,7 @@ namespace world
     {
         if(tilemap::draw(blurryvision, pos) != 0) 
             return -1;
+        
         for (int i = 0; i < sprites.size(); i++) 
         {
             sf::Texture t;

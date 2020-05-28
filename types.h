@@ -30,6 +30,11 @@ namespace world
 				pos<T> newpos(x + second.x, y + second.y);
 				return newpos;
 			}
+			pos operator-(pos<T> second) 
+			{
+				pos<T> newpos = *this + (second * -1);
+				return newpos;
+			}
 		};
 
 		typedef pos<int> tpos;
