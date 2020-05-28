@@ -26,8 +26,6 @@ namespace world
 
     class room : tilemap
     {
-        spritelist sprites;
-        stileset_t stileset;
         std::thread event_thread;
         std::atomic_bool stop_thread;
         std::queue<builtin_event> events;
@@ -40,6 +38,8 @@ namespace world
         void init(types::tileset_t _tileset, types::level_t _levels, stileset_t _stileset, spritelist _sprites);
         int render();
         int draw(sf::RenderWindow* blurryvision, types::epos pos);
+        spritelist sprites;
+        stileset_t stileset;
     };
 }
 #endif
