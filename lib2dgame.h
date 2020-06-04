@@ -12,34 +12,34 @@ namespace world
 {
     enum event_lib
     {
-	HB_COLLISION,
-	CB_COLLISION,
-	IB_COLLISION
+        HB_COLLISION,
+        CB_COLLISION,
+        IB_COLLISION
     };
 
     struct builtin_event
     {
-	int id_1;
-	int id_2;
-	event_lib event;
+        int id_1;
+        int id_2;
+        event_lib event;
     };
 
     class room : tilemap
     {
-	std::thread event_thread;
-	std::atomic_bool stop_thread;
-	std::queue<builtin_event> events;
+        std::thread event_thread;
+        std::atomic_bool stop_thread;
+        std::queue<builtin_event> events;
 
-	void poll_events();
+        void poll_events();
     public:
-	inline room() : tilemap::tilemap() {};
-	inline room(types::tileset_t _tileset, types::level_t _levels, stileset_t _stileset, spritelist _sprites)
-	    : tilemap::tilemap() { this->init(_tileset, _levels, _stileset, _sprites); }
-	void init(types::tileset_t _tileset, types::level_t _levels, stileset_t _stileset, spritelist _sprites);
-	int render();
-	int draw(sf::RenderWindow *blurryvision, types::epos pos);
-	spritelist sprites;
-	stileset_t stileset;
+        inline room() : tilemap::tilemap() {};
+        inline room(types::tileset_t _tileset, types::level_t _levels, stileset_t _stileset, spritelist _sprites)
+            : tilemap::tilemap() { this->init(_tileset, _levels, _stileset, _sprites); }
+        void init(types::tileset_t _tileset, types::level_t _levels, stileset_t _stileset, spritelist _sprites);
+        int render();
+        int draw(sf::RenderWindow* blurryvision, types::epos pos);
+        spritelist sprites;
+        stileset_t stileset;
     };
 }
 #endif

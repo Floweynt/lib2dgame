@@ -8,14 +8,14 @@ namespace world
 {
     struct sprite
     {
-	types::epos pos;
-	size_t stile_number;
+        types::epos pos;
+        size_t stile_number;
 
-	bool hasHitBox;
-	bool hasCollisionBox;
-	bool hasInteractBox;
-	types::epos hb1;
-	types::epos hb2;
+        bool hasHitBox;
+        bool hasCollisionBox;
+        bool hasInteractBox;
+        types::epos hb1;
+        types::epos hb2;
     };
 
     /*struct stile
